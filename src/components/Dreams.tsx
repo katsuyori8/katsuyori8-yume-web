@@ -49,7 +49,8 @@ export function Dreams({ dreams, onChange }: Props) {
     onChange(dreams.filter((d) => d.id !== id))
   }
 
-  function addGoal(dream: Dream) {
+  function addGoal(dream: Dream, event: FormEvent) {
+    event.preventDefault()
     const draft = (goalDrafts[dream.id] ?? '').trim()
     if (!draft) return
     updateDream(dream.id, {
@@ -186,7 +187,7 @@ export function Dreams({ dreams, onChange }: Props) {
                   ))}
                 </ul>
 
-                <div className="mt-2 flex gap-2">
+                <form onSubmit={(e) => addGoal(dream, e)} className="mt-2 flex gap-2">
                   <input
                     value={goalDrafts[dream.id] ?? ''}
                     onChange={(e) =>
@@ -196,12 +197,12 @@ export function Dreams({ dreams, onChange }: Props) {
                     className="flex-1 rounded-lg border border-slate-300 px-3 py-1 text-sm"
                   />
                   <button
-                    onClick={() => addGoal(dream)}
+                    type="submit"
                     className="rounded-lg bg-slate-200 px-3 py-1 text-sm"
                   >
                     追加
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </li>
