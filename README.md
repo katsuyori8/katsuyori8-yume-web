@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+# 夢が、かなうノート（Web版）
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+熊谷正寿の「夢が、かなうアプリ。byGMO」（https://shop.kumagai.com/app/ ）の手帳術をブラウザで実践できる非公式Web版です。
 
-Currently, two official plugins are available:
+## 機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **人生カウントダウン**：生年月日と寿命から残り日数を表示
+- **やりたいこと**：6分野ごとに夢を登録（各7個まで）／イメージ画像・実現日・目標チェックリスト
+- **ピラミッド型フォーマット**：分野ごとの登録数でバランスを可視化
+- **未来年表**：実現日を年ごとに並べ、残り日数を表示
+- **DWMY ToDo**：Daily / Weekly / Monthly / Yearly の習慣管理（夢との紐づけ可）
 
-## React Compiler
+データはブラウザの localStorage にのみ保存されます（サーバー送信なし）。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 開発
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # 開発サーバー
+npm run build    # 型チェック + 本番ビルド
+npm run lint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+技術スタック：React 19 / TypeScript / Vite / Tailwind CSS
